@@ -7,6 +7,7 @@ import java.util.ArrayList;
  * @author Blake
  */
 public class Client {
+    int clientID;
     private String firstName;
     private String lastName;
     private String email;
@@ -29,6 +30,7 @@ public class Client {
     * This is a Client constructor that takes the first name, last name, and email
     * of the client as Strings, then the phone number as an integer, then the city, 
     * province, postal code, and date of birth as Strings. 
+    * @param clientID
     * @param firstName
     * @param lastName
     * @param email
@@ -39,8 +41,9 @@ public class Client {
     * @param postalCode
     * @param dateOfBirth 
     */
-   public Client(String firstName, String lastName, String email, String streetAddress, 
+   public Client(int clientID, String firstName, String lastName, String email, String streetAddress, 
            int phoneNumber, String city, String prov, String postalCode, String dateOfBirth) {
+       this.clientID = clientID;
        this.firstName = firstName;
        this.lastName = lastName;
        this.email = email;

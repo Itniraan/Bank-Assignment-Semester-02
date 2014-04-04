@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class Teller {
 
     private ArrayList<String> customerList = new ArrayList<String>();
-    private static String currentCustomerId;
+    private static int currentCustomerId;
 
     /**
      * This is the default Teller constructor, that requires no parameters
@@ -39,7 +39,6 @@ public class Teller {
 
             try {
                 choice = input.nextInt();
-                choiceCheck = false;
             } catch (java.util.InputMismatchException e) {
                 System.err.println("Error caught: " + e + "\nPlease enter a numeric value.");
                 input.nextLine();
@@ -51,9 +50,12 @@ public class Teller {
 
             }
             if (choice == 1) {
+                choiceCheck = false;
                 createCustomer();
             } else if (choice == 2) {
-                
+                choiceCheck = false;
+            } else {
+                System.out.println("That is not a valid choice. Please try again.");
             }
         } while (choiceCheck);
     } // End of main method
@@ -69,8 +71,55 @@ public class Teller {
      * This method will take the user's input, and create a new Client class for
      * them.
      */
-    public static String createCustomer() {
+    public static int createCustomer() {
+        String firstName="", lastName="", address="", city="", prov="", postalCode="", 
+                DOB="", email="", typeOfAccount="";
+        int phone = 0;
+        boolean inputCheck = true;
+        Scanner input = new Scanner(System.in);
+        Scanner keyboard = new Scanner(System.in);
+
+        try {
+            System.out.println("Please enter your first name");
+            firstName = input.nextLine();
+
+            System.out.println("Please enter your last name");
+            lastName = input.nextLine();
+
+            System.out.println("Please enter your street address");
+            address = input.nextLine();
+
+            System.out.println("Please enter your city");
+            city = input.nextLine();
+
+            System.out.println("Please enter your province");
+            prov = input.nextLine();
+
+            System.out.println("Please enter your postal code");
+            postalCode = input.nextLine();
+
+            System.out.println("Please enter your phone number");
+            phone = keyboard.nextInt();
+            
+            System.out.println("Please enter your date of birth");
+            DOB = input.nextLine();
+            
+            System.out.println("Please enter your email address");
+            email = input.nextLine();
+            
+            System.out.println("What type of account would you like (Chequing or Savings)?");
+            typeOfAccount = input.nextLine();
+            System.out.println("Thank you. Your account will now be set up.");
+            
+        } catch (java.util.InputMismatchException e) {
+        }
         
+        ID newCustomer = new ID();
+        currentCustomerId = newCustomer.getNewCustomerID();
+        Client newClient = new Client(currentCustomerId, firstName, lastName, email, address, phone, city, prov, 
+                postalCode, DOB);
+        
+
         return currentCustomerId;
-    }
+    } // End of createCustomer method
 }
