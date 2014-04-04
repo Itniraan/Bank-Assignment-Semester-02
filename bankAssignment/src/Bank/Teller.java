@@ -14,6 +14,7 @@ import java.util.Scanner;
 public class Teller {
 
     private ArrayList<String> customerList = new ArrayList<String>();
+    private static String currentCustomerId;
 
     /**
      * This is the default Teller constructor, that requires no parameters
@@ -28,12 +29,12 @@ public class Teller {
      */
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        int choice;
+        int choice = 0;
         boolean choiceCheck = true;
-        System.out.println("Welcome to the bank! What would you like to do?");
+        System.out.println("Welcome to the bank! Are you a: ");
         do {
-            System.out.println("1. Register as a customer");
-            System.out.println("2. Create an account");
+            System.out.println("1. New customer?");
+            System.out.println("2. Existing customer?");
             System.out.print("Please choose an option: ");
 
             try {
@@ -49,6 +50,11 @@ public class Teller {
                 }
 
             }
+            if (choice == 1) {
+                createCustomer();
+            } else if (choice == 2) {
+                
+            }
         } while (choiceCheck);
     } // End of main method
 
@@ -56,6 +62,15 @@ public class Teller {
      * This method will call the Account class to create an account for the
      * client
      */
-    public void createAccount() {
+    public static void createAccount() {
     } // End of createAccount method
+
+    /**
+     * This method will take the user's input, and create a new Client class for
+     * them.
+     */
+    public static String createCustomer() {
+        
+        return currentCustomerId;
+    }
 }
