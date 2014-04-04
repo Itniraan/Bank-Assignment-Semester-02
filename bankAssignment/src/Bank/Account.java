@@ -8,7 +8,7 @@ package Bank;
  *
  * @author Blake Murdock (200260568)
  */
-public class Account {
+public abstract class Account {
     private String accountID;
     private String accountType;
     private double balance;
@@ -31,22 +31,42 @@ public class Account {
         this.balance = balance;
     } // End of Account constructor
     
+    /**
+     * This method will subtract a passed in double parameter from the balance variable
+     * @param amount 
+     */
     public void withdraw (double amount) {
         balance -= amount;
     } // End of withdraw method
     
+    /**
+     * This method will add a passed in double parameter to the balance variable
+     * @param amount 
+     */
     public void deposit (double amount) {
         balance += amount;
     } // End of deposit method
     
+    /**
+     * This method will return the balance of the Account
+     * @return 
+     */
     public double getBalance() {
         return this.balance;
     } // End of getBalance method
     
+    /**
+     * This method will return the type of the Account
+     * @return 
+     */
     public String getAccountType() {
         return this.accountType;
     } // End of getAccountType method
     
+    /**
+     * This method will return the ID of the Account
+     * @return 
+     */
     public String getAccountID() {
         return this.accountID;
     } // End of getAcountID method
