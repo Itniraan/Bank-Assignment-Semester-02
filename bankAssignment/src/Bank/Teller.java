@@ -52,6 +52,7 @@ public class Teller {
             if (choice == 1) {
                 choiceCheck = false;
                 createCustomer();
+                loginCustomer();
             } else if (choice == 2) {
                 choiceCheck = false;
             } else {
@@ -75,6 +76,7 @@ public class Teller {
         String firstName="", lastName="", address="", city="", prov="", postalCode="", 
                 DOB="", email="", typeOfAccount="";
         int phone = 0;
+        double openingBalance = 0;
         boolean inputCheck = true;
         Scanner input = new Scanner(System.in);
         Scanner keyboard = new Scanner(System.in);
@@ -107,19 +109,29 @@ public class Teller {
             System.out.println("Please enter your email address");
             email = input.nextLine();
             
-            System.out.println("What type of account would you like (Chequing or Savings)?");
+            System.out.println("What type of account would you like (C for Chequing or S for Savings)?");
             typeOfAccount = input.nextLine();
+            if (typeOfAccount.equalsIgnoreCase("C")) {
+                System.out.println("Your overdraft will be $500.00");
+                System.out.println("What would you like to deposit to open your account?:");
+                openingBalance = keyboard.nextInt();
+            }
             System.out.println("Thank you. Your account will now be set up.");
-            
+            // VERIFY
         } catch (java.util.InputMismatchException e) {
         }
         
         ID newCustomer = new ID();
+        int accountID = newCustomer.getNewAccountID();
         currentCustomerId = newCustomer.getNewCustomerID();
-        Client newClient = new Client(currentCustomerId, firstName, lastName, email, address, phone, city, prov, 
-                postalCode, DOB);
-        
-
+        Client newClient = new Client(currentCustomerId, firstName, lastName, email, address, phone,
+                city, prov, postalCode, DOB);
+        if (typeOfAccount.equalsIgnoreCase("C")) {
+            Account newAccount = new chequingAccount(accountID, openingBalance, 500.00);
+        }
+        else if (typeOfAccount.equalsIgnoreCase("S")) {
+            Account newAccount = new savingsAccount(accountID, openingBalance);
+        }
         return currentCustomerId;
     } // End of createCustomer method
 }

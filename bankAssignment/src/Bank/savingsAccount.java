@@ -11,8 +11,8 @@ package Bank;
 public class savingsAccount extends Account{
     private double interestRate;
     
-    public savingsAccount(String accountType, double balance) {
-        super(accountType, balance);
+    public savingsAccount(int accountID, double balance) {
+        super(accountID, balance);
     } // End of savingsAccount constructor
     
     /**

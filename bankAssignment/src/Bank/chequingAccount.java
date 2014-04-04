@@ -10,8 +10,8 @@ package Bank;
  */
 public class chequingAccount extends Account{
     private double overdraft;
-    public chequingAccount(String accountType, double balance, double overdraft) {
-        super(accountType, balance);
+    public chequingAccount(int accountID, double balance, double overdraft) {
+        super(accountID, balance);
         this.overdraft = overdraft;
     } // End of chequingAccount constructor
     

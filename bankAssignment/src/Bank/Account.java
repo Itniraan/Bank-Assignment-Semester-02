@@ -9,8 +9,7 @@ package Bank;
  * @author Blake Murdock (200260568)
  */
 public abstract class Account {
-    private String accountID;
-    private String accountType;
+    private int accountID;
     private double balance;
     
     
@@ -23,11 +22,10 @@ public abstract class Account {
     /**
      * This is a Account constructor that accepts an account type as a String, 
      * and a starting balance as a double.
-     * @param accountType
      * @param balance 
      */
-    public Account(String accountType, double balance) {
-        this.accountType = accountType;
+    public Account(int accountID, double balance) {
+        this.accountID = accountID;
         this.balance = balance;
     } // End of Account constructor
     
@@ -55,19 +53,12 @@ public abstract class Account {
         return this.balance;
     } // End of getBalance method
     
-    /**
-     * This method will return the type of the Account
-     * @return 
-     */
-    public String getAccountType() {
-        return this.accountType;
-    } // End of getAccountType method
-    
+
     /**
      * This method will return the ID of the Account
      * @return 
      */
-    public String getAccountID() {
+    public int getAccountID() {
         return this.accountID;
     } // End of getAcountID method
 } // End of Account class
