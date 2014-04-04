@@ -123,7 +123,6 @@ public class Teller {
         
         ID newCustomer = new ID();
         int accountID = newCustomer.getNewAccountID();
-        currentCustomerId = newCustomer.getNewCustomerID();
         Client newClient = new Client(currentCustomerId, firstName, lastName, email, address, phone,
                 city, prov, postalCode, DOB);
         if (typeOfAccount.equalsIgnoreCase("C")) {
@@ -132,6 +131,8 @@ public class Teller {
         else if (typeOfAccount.equalsIgnoreCase("S")) {
             Account newAccount = new savingsAccount(accountID, openingBalance);
         }
+        currentCustomerId = newClient.getClientID;
+        
         return currentCustomerId;
     } // End of createCustomer method
 }
