@@ -13,7 +13,7 @@ import java.util.Scanner;
  */
 public class Teller {
 
-    private ArrayList<String> customerList = new ArrayList<String>();
+    private ArrayList<Client> customerList = new ArrayList<>();
     private static int currentCustomerId;
 
     /**
@@ -30,11 +30,11 @@ public class Teller {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         int choice = 0;
-        boolean choiceCheck = true;
-        System.out.println("Welcome to the bank! Are you a: ");
+        System.out.println("Welcome to JBank! Are you a: ");
         do {
             System.out.println("1. New customer?");
             System.out.println("2. Existing customer?");
+            System.out.println("3. Exit System.");
             System.out.print("Please choose an option: ");
 
             try {
@@ -43,22 +43,20 @@ public class Teller {
                 System.err.println("Error caught: " + e + "\nPlease enter a numeric value.");
                 input.nextLine();
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(500);
                 } catch (InterruptedException IE) {
                     System.err.println("Thread Interuptted!!");
                 }
 
             }
             if (choice == 1) {
-                choiceCheck = false;
                 createCustomer();
                 loginCustomer();
             } else if (choice == 2) {
-                choiceCheck = false;
             } else {
                 System.out.println("That is not a valid choice. Please try again.");
             }
-        } while (choiceCheck);
+        } while (choice!=3);
     } // End of main method
 
     /**
@@ -121,8 +119,7 @@ public class Teller {
         } catch (java.util.InputMismatchException e) {
         }
         
-        ID newCustomer = new ID();
-        int accountID = newCustomer.getNewAccountID();
+        int accountID = ID.getNewAccountID();
         Client newClient = new Client(currentCustomerId, firstName, lastName, email, address, phone,
                 city, prov, postalCode, DOB);
         if (typeOfAccount.equalsIgnoreCase("C")) {
@@ -135,4 +132,8 @@ public class Teller {
         
         return currentCustomerId;
     } // End of createCustomer method
+    
+    public static void loginCustomer() {
+        
+    }
 }

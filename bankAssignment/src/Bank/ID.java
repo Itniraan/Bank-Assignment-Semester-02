@@ -19,9 +19,8 @@ public class ID {
      *
      * @return
      */
-    public int getNewCustomerID() {
-        this.customerID += 1;
-        return this.customerID;
+    public static int getNewCustomerID() {
+        return (++customerID);
     } // End of getNewCustomerID method
 
     /**
@@ -29,9 +28,8 @@ public class ID {
      * return it to the class that called it.
      * @return 
      */
-    public int getNewAccountID() {
-        this.accountID += 1;
-        return this.accountID;
+    public static int getNewAccountID() {
+        return (++accountID);
     } // End of getNewAccountID method
     
     /**
@@ -39,8 +37,7 @@ public class ID {
      * return it to the class that called it.  
      * @return 
      */
-    public int getTransactionID() {
-        this.transactionID += 1;
-        return this.transactionID;
+    public static int getTransactionID() {
+        return (++transactionID);
     }
 }
